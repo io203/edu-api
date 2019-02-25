@@ -1,0 +1,26 @@
+
+    
+
+
+
+server:
+  port: 8001
+  
+spring:
+  profiles: local
+  
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: blackstar
+    password: 1234
+    maxIdle: 20
+    maxActive: 400
+    maxWait: 10000
+    validationQuery: SELECT 1
+
+    
+mybatis:
+  config-location: classpath:mapper/mybatis-config.xml
+  mapper-locations: classpath:mapper/board*.xml
+    
