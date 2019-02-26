@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.edu.common.model.ResultMessage;
 import com.app.edu.model.Board;
 import com.app.edu.service.BoardService;
 
