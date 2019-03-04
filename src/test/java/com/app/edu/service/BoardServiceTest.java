@@ -1,4 +1,6 @@
-package com.app;
+package com.app.edu.service;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,22 +9,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.app.edu.EduApiApplication;
-import com.app.edu.dao.BoardDAO;
+import com.app.edu.model.Board;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EduApiApplication.class)
-public class EduApiApplicationTests {
+public class BoardServiceTest {
 	
 	@Autowired
-	BoardDAO dao;
-
+	private BoardService service;
+	
+	
 	@Test
-	public void testDao() throws Exception {
+	public void boardList_test() throws Exception {
+		int start=0;
+		int end=10;
+		List<Board> list = service.boardList(start, end);
 		
-		int totalCount = dao.selectBoardTotalCount();
-		
-		System.out.println("count:"+totalCount);
+		System.out.println("list:"+list.toString());
 	}
 
 }
-

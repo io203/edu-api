@@ -29,12 +29,7 @@ public class ResultMessage {
 		this.devMessage = null;
 	}
 	
-	public ResultMessage(String successYn,String statusCode, String message, String devMessage) {
-		this.successYn = successYn;
-		this.statusCode = null;
-		this.message = message;
-		this.devMessage = null;
-	}
+	
 
 	
 }

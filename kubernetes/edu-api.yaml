@@ -8,9 +8,10 @@ spec:
     app: edu-api
   ports:
   - protocol: TCP
-    port: 8009
-    nodePort: 30001
-  type: NodePort
+    port: 80
+    targetPort: 8009
+   # nodePort: 30001
+  type: LoadBalancer
   
 ---
 
@@ -19,7 +20,7 @@ kind: Deployment
 metadata:
   name: edu-api
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -28,7 +29,7 @@ spec:
     spec:
       containers:
       - name: edu-api
-        image: gcr.io/api-project-296757883911/edu-api:v45
+        image: gcr.io/api-project-296757883911/edu-api:v3
         imagePullPolicy: Always
         ports:
         - containerPort: 8009

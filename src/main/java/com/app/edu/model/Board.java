@@ -17,18 +17,16 @@ public class Board {
 	private String writeName;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime writeDate;	 
+	private LocalDateTime writeDate;
 	
-	private String modifyName;
-	
+	private String modifyName;	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime  modifyDate;
-	
-	 
+	private LocalDateTime  modifyDate;	 
 	 
 	private int cnt;
 	private String writeId;
 	private String modifyId;
+	
 	
 	
 

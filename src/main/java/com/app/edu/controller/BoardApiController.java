@@ -41,6 +41,9 @@ public class BoardApiController {
 	@GetMapping()
 	public  ResponseEntity<List<Board>>  list(@RequestParam(value="start", defaultValue = "0")  int start , @RequestParam(value="end", defaultValue = "10") int end) throws Exception {
 
+		System.out.println("======== start:"+start);
+		System.out.println("======= end:"+end);
+		
 		List<Board> list = boardService.boardList(start, end);
 		// delay(1);
 
@@ -56,14 +59,15 @@ public class BoardApiController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<ResultMessage> insert(@Valid @RequestBody Board apiBoard) throws Exception {
-		log.debug("--------api insert");
+	public ResponseEntity<ResultMessage> insert( final @RequestBody Board apiBoard) throws Exception {
+		log.debug("--------api insert");		
+		
 		int result = boardService.insertBoard(apiBoard);
 		return getResponseEntity(result);
 	}
 
 	@PutMapping()
-	public ResponseEntity<ResultMessage> update(@Valid @RequestBody Board apiBoard) throws Exception {
+	public ResponseEntity<ResultMessage> update( @RequestBody Board apiBoard) throws Exception {
 		log.debug("--------api update");
 		int result = boardService.updateBoard(apiBoard);
 		return getResponseEntity(result);
