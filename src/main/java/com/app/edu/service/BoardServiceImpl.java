@@ -3,12 +3,14 @@ package com.app.edu.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.edu.dao.BoardDAO;
 import com.app.edu.model.Board;
+import com.app.edu.spring.redis.RedisManager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +21,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDAO boardDAO;
+	
+	@Autowired
+	private RedisManager<Board> redisManager;
 
 	@Override
 	public int selectBoardTotalCount() throws Exception {
@@ -44,8 +49,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board selectBoard(int num) throws Exception {
+		
+		Board board = redisManager.getValue("board_" + num);
+		if (board == null) {
+			log.info("edu-api------------DB call:---------selectBoard(num)---------------------");
+			board = boardDAO.selectBoard(num);
+			redisManager.put("board_" + num, board, 15, TimeUnit.SECONDS);
 
-		Board board = boardDAO.selectBoard(num);
+		}
 
 		return board;
 	}
@@ -54,6 +65,8 @@ public class BoardServiceImpl implements BoardService {
 	public int deleteBoard(int num) throws Exception {
 
 		int result = boardDAO.deleteBoard(num);
+		
+		redisManager.delete(String.valueOf(num));
 
 		return result;
 	}
@@ -66,8 +79,10 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int updateBoard(Board board) {
-		return boardDAO.updateBoard(board);
-
+		int result = boardDAO.updateBoard(board);
+		redisManager.delete(String.valueOf(board.getNum()));
+		
+		return result;
 		 
 	}
 

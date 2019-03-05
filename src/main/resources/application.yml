@@ -5,8 +5,8 @@ server:
 spring:  
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://edu-mysql-data-svc.default.svc.cluster.local:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
-    url: jdbc:mysql://localhost:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://edu-mysql-data-svc.default.svc.cluster.local:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+#    url: jdbc:mysql://localhost:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
   
     username: blackstar
     password: 1234
@@ -14,7 +14,11 @@ spring:
     maxActive: 400
     maxWait: 10000
     validationQuery: SELECT 1
-
+  
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 50
     
 mybatis:
   config-location: classpath:mapper/mybatis-config.xml

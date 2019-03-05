@@ -1,5 +1,6 @@
 package com.app.edu.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class Board {
+public class Board implements Serializable{
 	 
 	private int num;
 	private String title;
