@@ -5,7 +5,9 @@ server:
 spring:  
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://edu-mysql-data-svc.default.svc.cluster.local:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+#    url: jdbc:mysql://edu-mysql-data-svc.default.svc.cluster.local:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/blackstar?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+  
     username: blackstar
     password: 1234
     maxIdle: 20
