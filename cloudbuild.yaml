@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
-  args: ['install']
+  args: ['install -Dmaven.test.skip=true']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/api-project-296757883911/edu-api', '.']
   timeout: 500s
