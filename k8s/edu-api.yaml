@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: edu-api
-        image: gcr.io/api-project-296757883911/edu-api:v45
+        image: gcr.io/api-project-296757883911/edu-api
         imagePullPolicy: Always
         ports:
         - containerPort: 8009
