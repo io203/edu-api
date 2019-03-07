@@ -8,10 +8,10 @@ spec:
     app: edu-api
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8009
+    port: 8009
+    #targetPort: 8009
    # nodePort: 30001
-  type: LoadBalancer
+  #type: LoadBalancer
   
 ---
 
