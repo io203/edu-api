@@ -12,6 +12,8 @@ spec:
     nodePort: 30001
   type: NodePort
   
+
+
 ---
 
 apiVersion: extensions/v1beta1
