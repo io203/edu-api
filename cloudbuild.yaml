@@ -6,6 +6,11 @@ steps:
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/api-project-296757883911/edu-api']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f','k8s/edu-api.yaml']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-northeast1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=edu-tutorial'
 options:
   machineType: 'N1_HIGHCPU_8' # HIGHCPU로 빌드 스피드 업
 timeout: 1000s # 빌드 자체에 대한 타임 아웃
