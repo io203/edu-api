@@ -24,3 +24,7 @@ spring:
 mybatis:
   config-location: classpath:mapper/mybatis-config.xml
   mapper-locations: classpath:mapper/board*.xml
+  
+  
+  
+ test
